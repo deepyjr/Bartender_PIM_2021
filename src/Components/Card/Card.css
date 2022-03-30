@@ -1,0 +1,9 @@
+.card{
+    height: 350px!important;
+    width: 250px;
+    margin: 15px;
+}
+.main-image>img{
+    height: 250px!important;
+    
+}

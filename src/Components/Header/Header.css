@@ -1,0 +1,15 @@
+.header{
+    height:100px;
+    Width:100%;
+    display: flex;
+    justify-content: space-around;
+}
+.resetCommande{
+   position: absolute;
+   left: 0;
+   margin: 15px 0 0 15px;
+   font-size: 15px !important;
+   min-height: 40px !important;
+}
+
+
