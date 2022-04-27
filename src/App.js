@@ -9,7 +9,6 @@ function App() {
     <div className="App">
       <BrowserRouter>
       <Layout></Layout>
-
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/cart-content" element={<CartContent />} />

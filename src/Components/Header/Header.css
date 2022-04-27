@@ -33,3 +33,12 @@
     font-weight: bold;
     height:100%;
 }
+.active {
+    color:#F4A261 !important;
+}
+.active + .shopping-cart-icon{
+    color:#F4A261 !important;
+}
+.nav-item {
+    color: #264653;
+}

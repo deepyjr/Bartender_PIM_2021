@@ -1,6 +1,6 @@
 import React from "react";
 import "./Header.css";
-import { BrowserRouter as Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { Name } from "../../Environnement";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
@@ -13,22 +13,22 @@ function Header() {
       <div className="right-part">
         <ul>
           <li>
-            <Link to="/">
-              <p>Boissons</p>
-            </Link>
+            <NavLink className="nav-item" to="/">Boissons</NavLink>
           </li>
           <li>
-            <Link to="/">
-              <p>Mes informations</p>
-            </Link>
+              <NavLink className="nav-item" to="/test">Mes informations</NavLink>
           </li>
-          <li>
-            <Link to="/cart-content">
-              <ShoppingCartIcon
+          <li> 
+          <NavLink to="/cart-content" style={({ isActive }) => {
+              return {
+                color: isActive ? "red" : "",
+              };
+            }}>
+              <ShoppingCartIcon 
                 size="lg"
                 className="shopping-cart-icon"
               ></ShoppingCartIcon>
-            </Link>
+            </NavLink>
           </li>
         </ul>
 
