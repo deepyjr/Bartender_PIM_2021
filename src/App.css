@@ -10,6 +10,7 @@
   padding: 0;
   z-index: 150;
   position:relative;
+  background-color: #1C2942;
 }
 
 .App-logo {
@@ -23,14 +24,14 @@
   }
 }
 
-h1 , h2 , h3 , h4 , h5 , h6{
+h1 {
   font-family: 'Fredoka One', cursive;
-  color: #E76F51;
+  color: #5FC2BA;
 }
 
 p {
   font-family: 'Inconsolata', monospace;
-  color: #264653;
+  color: #FFFFFF;
 }
 .App-header {
   background-color: #282c34;

@@ -1,9 +1,22 @@
 .card{
-    height: 350px!important;
+    height: 100%!important;
     width: 250px;
     margin: 15px;
+    background-color: white;
+    border-radius: 15px !important;
+    border: 3px solid #3B556D!important;
+    color: #0B162C;
 }
+
+p{
+    color: #0B162C;
+    margin : 0 10px ;
+}
+h2{
+    color: #0B162C; 
+}
+
 .main-image>img{
     height: 250px!important;
-    
+    padding: 15px 0 ;
 }

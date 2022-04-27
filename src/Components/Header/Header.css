@@ -34,11 +34,11 @@
     height:100%;
 }
 .active {
-    color:#F4A261 !important;
+    color:#5FC2BA !important;
 }
 .active + .shopping-cart-icon{
-    color:#F4A261 !important;
+    color:#5FC2BA !important;
 }
 .nav-item {
-    color: #264653;
+    color: #FFFFFF;
 }
