@@ -1,15 +1,20 @@
-import './App.css';
+import "./App.css";
 import Layout from "./Views/Layout";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import HomePage from './Views/HomePage';
-
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import HomePage from "./Views/HomePage";
+import CartContent from "./Views/CartContent/CartContent";
 
 function App() {
   return (
     <div className="App">
-      <Router>
-        <HomePage></HomePage>
-      </Router>
+      <BrowserRouter>
+      <Layout></Layout>
+
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/cart-content" element={<CartContent />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

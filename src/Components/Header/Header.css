@@ -11,5 +11,25 @@
    font-size: 15px !important;
    min-height: 40px !important;
 }
-
-
+.shopping-cart-icon{
+    color: #264653;
+    font-size: 30px !important;
+}
+.left-part{
+    width: 100%;
+}
+.right-part {
+    width: 100%;
+}
+.right-part> ul {
+    list-style: none;
+    display: flex;
+    align-items:center;
+    justify-content:center;
+}
+.right-part> ul> li {
+    margin: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    height:100%;
+}
