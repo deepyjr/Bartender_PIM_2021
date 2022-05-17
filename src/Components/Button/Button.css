@@ -13,3 +13,7 @@
     text-align: center;
     margin: 15px 0;
 }
+.custom-button:hover{
+    background-color: #537594;
+    cursor: pointer;
+}

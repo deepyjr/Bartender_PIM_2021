@@ -1,8 +1,11 @@
 .header{
-    height:100px;
+    height:90px;
     Width:100%;
     display: flex;
     justify-content: space-around;
+    background-color:#1C2942;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 2px 8px;
+    margin-bottom:15px;
 }
 .resetCommande{
    position: absolute;
