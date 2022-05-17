@@ -9,7 +9,7 @@ module.exports = {
         });
     },
     readOne(req, res) {
-        Drink.findOne({ immatriculation: req.params.immatriculation }).then((drink) => {
+        Drink.findById(req.params.id).then((drink) => {
             res.send(drink);
         }).catch((err) => {
             res.send(err);
@@ -17,14 +17,14 @@ module.exports = {
     },
     create(req, res) {
         //TODO a changer
-        const immatriculation = req.body.immatriculation;
-        const modele = req.body.modele;
-        const marque = req.body.marque;
+        const name = req.body.name;
+        const type = req.body.type;
+        const srcImg = req.body.srcImg;
 
         const newDrink = new Drink({
-            immatriculation: immatriculation,
-            modele: modele,
-            marque: marque
+            name: name,
+            type: type,
+            srcImg: srcImg
         });
         newDrink.save().then(() => {
             res.send("La boisson a bien été ajoutée");
@@ -32,25 +32,22 @@ module.exports = {
             res.send(err);
         });
     },
-
     delete(req, res) {
-        const immatriculation = req.params.immatriculation;
-        Drink.findOneAndRemove({ immatriculation: immatriculation }).then((drink) => {
-            //const message = "Voiture immatriculatiée:" + immatriculation + " a bien été supprimée"
+        Drink.findByIdAndDelete(req.params.id).then((drink) => {
+            const message = " Boisson: a bien été supprimée"
             res.send(message);
         }).catch((err) => {
             res.send(err);
         });
     },
-
     update(req, res) {
-        const filter = { immatriculation: req.params.immatriculation }
         const dataToUpdate = {
-            modele: req.body.modele,
-            marque: req.body.marque
+            name: req.body.name,
+            type: req.body.type,
+            srcImg: req.body.srcImg
         }
 
-        Drink.findOneAndUpdate(filter, dataToUpdate, { new: true })
+        Drink.findByIdAndUpdate(req.params.id, dataToUpdate, { new: true })
             .then((drink) => {
                 res.send(drink)
             })
