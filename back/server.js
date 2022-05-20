@@ -5,7 +5,7 @@ const routeOrder = require('./routes/order')
 const routeQuantityMachine = require('./routes/quantityMachine')
 const routeRecipe = require('./routes/recipe')
 const routeWaitingOrder = require('./routes/waitingOrder')
-const routeTrolley = require('./routes/trolley')
+const routeCart = require('./routes/cart')
 
 
 const bodyParser = require('body-parser');
@@ -21,7 +21,7 @@ routeOrder(server);
 routeQuantityMachine(server);
 routeRecipe(server);
 routeWaitingOrder(server);
-routeTrolley(server);
+routeCart(server);
 
 server.listen(8080, () => {
     console.log("Serveur demarré en écoute sur le porte 8080 !")
