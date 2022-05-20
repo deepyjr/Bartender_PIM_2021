@@ -5,7 +5,7 @@ import './Button.css'
 function Button(props) {
   return (
   <Link to={props.link}>
-    <button className="custom-button">{props.text}</button>
+    <button className={"custom-button " + props.action}>{props.text}</button>
   </Link>
   )
 }

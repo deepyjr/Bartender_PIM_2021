@@ -2,7 +2,7 @@
     background-color: #3B556D;
     color: #fff;
     border-radius: 8px;
-    min-height: 50px;
+    min-height: 35px;
     min-width: 120px;
     border: 1px solid #3B556D;
     box-sizing: border-box;
@@ -13,7 +13,17 @@
     text-align: center;
     margin: 15px 0;
 }
+
 .custom-button:hover{
     background-color: #537594;
     cursor: pointer;
+}
+
+.delete{
+    background-color: #FF2323!important;
+    border-color:#FF2323 !important;
+}
+.delete:hover{
+    background-color: red !important;
+    border-color:red !important;
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import './CartContent.css';
 import {CartContext} from '../../Store/CartContext'
 import axios from "axios";
+import CartItem from "../../Components/CartItem/cartItem";
 
 function CartContent() {
   const [lineItems, setLineItems] = React.useState();
@@ -43,6 +44,10 @@ function CartContent() {
 
     <h2>Mon panier</h2>
       <div className="container-cart">
+        <CartItem></CartItem>
+        <CartItem></CartItem>
+        <CartItem></CartItem>
+        <CartItem></CartItem>
         {lineItems}
       </div>
     </div>
