@@ -1,18 +1,14 @@
-//TODO
 const mongoose = require("mongoose")
 
 const schema = mongoose.Schema({
-    immatriculation: {
+    name: {
         type: String,
         required: true
     },
-    modele: {
-        type: String
-    },
-    marque: {
-        type: String
-    },
-    prix: {}
+    drinks: [{
+        id_drink: { type: String },
+        quantity: { type: Number }
+    }]
 })
 
 module.exports = mongoose.model("Recipe", schema)
