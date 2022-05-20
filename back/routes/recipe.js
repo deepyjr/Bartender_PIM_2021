@@ -5,4 +5,5 @@ module.exports = (server) => {
     server.get('/recipe/:id', RecipeController.readOne);
     server.put('/recipe/:id', RecipeController.update);
     server.delete('/recipe/:id', RecipeController.delete);
+    server.delete('/recipes', RecipeController.deleteAll);
 }
