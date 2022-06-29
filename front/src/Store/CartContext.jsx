@@ -7,7 +7,7 @@ const initialState = {
     userCart: []
 }
 
-function kebabReducer(state, action) {
+function cartReducer(state, action) {
     switch (action.type) {
         case 'addToCart': {
             return {
@@ -25,7 +25,7 @@ function kebabReducer(state, action) {
 }
 
 function CartProvider({ children }) {
-    const [cartState, cartDispatch] = React.useReducer(kebabReducer, localState || initialState)
+    const [cartState, cartDispatch] = React.useReducer(cartReducer, localState || initialState)
 
     React.useEffect(() => {
         localStorage.setItem('cartState', JSON.stringify(cartState))

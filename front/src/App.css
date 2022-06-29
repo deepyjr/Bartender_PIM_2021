@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Inconsolata&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 .App {
   text-align: center;
   height: 100vh;
@@ -24,14 +24,17 @@
   }
 }
 
-h1 {
-  font-family: 'Fredoka One', cursive;
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', sans-serif;
+
+}
+h1{
   color: #5FC2BA;
 }
 
 p {
-  font-family: 'Inconsolata', monospace;
-  color: #FFFFFF;
+  font-family: 'Montserrat', sans-serif;
+  color: #0B162C;
 }
 .App-header {
   background-color: #282c34;
