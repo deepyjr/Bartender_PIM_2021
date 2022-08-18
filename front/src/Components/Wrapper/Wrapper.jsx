@@ -36,6 +36,7 @@ function Wrapper(props) {
                   name: item.name,
                   description: item.description,
                   price: item.prix,
+                  quantity: 1
                 }
               })
             }}>

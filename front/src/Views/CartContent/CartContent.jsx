@@ -14,6 +14,7 @@ function CartContent() {
     const callApi = () => {
       setRefreshComponent(true);
          console.log(cartState.userCart)
+        
       // axios
       //   .post(baseUrl + "/folderDetail", { path: pathState.path })
       //   .then(function (response) {
@@ -44,11 +45,9 @@ function CartContent() {
 
     <h2>Mon panier</h2>
       <div className="container-cart">
-        <CartItem></CartItem>
-        <CartItem></CartItem>
-        <CartItem></CartItem>
-        <CartItem></CartItem>
-        {lineItems}
+        {/* { cartState.userCart.map((cartItem,index) =>{
+            return(<CartItem name={cartItem.name} price={cartItem.price} quantity={cartItem.quantity}></CartItem>)
+         })} */}
       </div>
     </div>
   )

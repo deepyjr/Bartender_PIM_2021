@@ -25,6 +25,7 @@ function Header() {
               };
             }}>
               <ShoppingCartIcon 
+                sx={{ color: "white" }}
                 size="lg"
                 className="shopping-cart-icon"
               ></ShoppingCartIcon>

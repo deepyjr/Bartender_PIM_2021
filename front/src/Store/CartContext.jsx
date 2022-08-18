@@ -12,7 +12,7 @@ function cartReducer(state, action) {
         case 'addToCart': {
             return {
                 ...state,
-                userCart: [...state.userCart, action.payload]
+                userCart: [...state.userCart,action.payload]
             }
         }
         case 'resetAll': {

@@ -39,9 +39,9 @@
 .active {
     color:#5FC2BA !important;
 }
-.active + .shopping-cart-icon{
-    color:#5FC2BA !important;
-}
+
 .nav-item {
     color: #FFFFFF;
+    font-weight: normal;
+    font-family: 'Montserrat', sans-serif;
 }
