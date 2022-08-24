@@ -1,7 +1,8 @@
+const moment = require('moment');
 module.exports = {
   findTheOldestElement(data) {
-    dateArray = [];
-    elementOldest = null
+    let dateArray = [];
+    let elementOldest = null
 
     data.forEach((element, index) => {
       dateArray.push(new Date(element.dateOrdered));
@@ -12,14 +13,12 @@ module.exports = {
     );
 
     data.forEach((element, index) => {
-      console.log(oldest, new Date(element.dateOrdered))
-      tempDate = new Date(element.dateOrdered).getTime();
-      if(oldest.getTime() === tempDate.getTime()){
-        console("c'est bon")
+      const tempDate = new Date(element.dateOrdered);
+      if(moment(oldest).isSame(tempDate)){
+        elementOldest = element
       }
     });
 
-    console.log(elementOldest)
-    return(oldest);
+    return(elementOldest);
   },
 };
