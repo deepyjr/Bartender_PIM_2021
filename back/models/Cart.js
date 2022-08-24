@@ -2,8 +2,7 @@
 const mongoose = require("mongoose")
 
 const schema = mongoose.Schema({
-    //recette nom , recette quantité + recette prix
-    name: {
+    drink: {
         type: String
     },
     quantity: {
@@ -11,7 +10,13 @@ const schema = mongoose.Schema({
     },
     price: {
         type: Number
+    },
+    dateOrdered: {
+        type: String
+    },
+    status: {
+        type: String
     }
 })
 
-module.exports = mongoose.model("Cart", schema)
+module.exports = mongoose.model("carts", schema)

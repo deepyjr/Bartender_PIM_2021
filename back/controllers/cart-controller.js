@@ -1,4 +1,7 @@
 const Cart = require('../models/Cart')
+const dateFunctions = require('../functions/date-functions')
+const mongoose = require('mongoose');
+
 module.exports = {
 
     readAll(req, res) {
@@ -9,21 +12,25 @@ module.exports = {
         });
     },
     create(req, res) {
-        //TODO a changer
-        const name = req.body.name;
-        const quantity = req.body.quantity;
-        const price = req.body.price;
-
-        const newCart = new Cart({
-            name: name,
-            quantity: quantity,
-            price: price
-        });
-        newCart.save().then(() => {
-            res.send("Commande ajoutée au panier");
-        }).catch((err) => {
-            res.send(err);
-        });
+        console.log('Route de création de Panier')
+        req.body.forEach((item) => {
+            const cartItem = new Cart({
+                drink: item.name,
+                quantity: item.quantity,
+                price: item.price,
+                dateOrdered: dateFunctions.getDateNow(),
+                status:"en attente"
+            })
+            mongoose.model('carts').create(cartItem, function (err, cart) {
+                if (err) {
+                    console.error(err)
+                } else{
+                    console.log("created",cart)
+                }
+            });
+            const message = "Commande passée avec succès vos boissons sont dans la file d'attente veuillez mettre votre verre"
+            res.send(message);
+        })
     },
     deleteAll(req, res) {
         Cart.deleteMany({}).then((cart) => {
