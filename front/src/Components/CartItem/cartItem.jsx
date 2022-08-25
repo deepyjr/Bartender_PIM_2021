@@ -1,8 +1,19 @@
 import React from 'react';
 import './cartItem.css';
 import Button from "../Button/Button";
+import { CartContext } from "../../Store/CartContext";
 
-function cardItem(props) {
+function CardItem(props) {
+  const { cartState, cartDispatch } = React.useContext(CartContext);
+
+  function deleteFunction(index) {
+    console.log(" test")
+    cartDispatch({
+      type:"deleteOne",
+      payload:index
+    })
+  }
+
   return (
     <div className="container-cart-item">
        <img src={process.env.PUBLIC_URL + '/whisky.jpg'} alt="" />
@@ -12,11 +23,11 @@ function cardItem(props) {
           <div>Quantity : {props.quantity}</div>
        </div>
        <div className="container-button-item">
-        <Button className="btn-delete" action="delete" link={"/acheter"} text={"Retirer du panier"}/>
+        <button onClick={()=>{deleteFunction(props.id)}} className="custom-button delete">Supprimer du panier</button>
        </div>
       
     </div>
   )
 }
 
-export default cardItem
+export default CardItem

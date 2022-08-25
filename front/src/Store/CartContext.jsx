@@ -15,6 +15,16 @@ function cartReducer(state, action) {
                 userCart: [...state.userCart,action.payload]
             }
         }
+        case 'deleteOne': {
+            const myIndex = action.payload;
+            const tempArray = state.userCart;
+            tempArray.pop();
+            console.log("first")
+            return {
+                ...state,
+                userCart: tempArray
+            }
+        }
         case 'resetAll': {
             return initialState
         }

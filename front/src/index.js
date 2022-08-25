@@ -6,11 +6,9 @@ import reportWebVitals from "./reportWebVitals";
 import { CartProvider } from "./Store/CartContext";
 
 ReactDOM.render(
-  <React.StrictMode>
     <CartProvider>
       <App />
-    </CartProvider>
-  </React.StrictMode>,
+    </CartProvider>,
   document.getElementById("root")
 );
 

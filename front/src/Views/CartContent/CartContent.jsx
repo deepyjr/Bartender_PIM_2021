@@ -2,7 +2,7 @@ import React from 'react';
 import './CartContent.css';
 import {CartContext} from '../../Store/CartContext'
 import axios from "axios";
-import CartItem from "../../Components/CartItem/cartItem";
+import CartItem from "../../Components/CartItem/CartItem";
 import Button from "../../Components/Button/Button";
 import {BackAddress} from "../../Environnement";
 
@@ -30,7 +30,7 @@ function CartContent() {
     <h2>Mon panier</h2>
       <div className="container-cart">
         { cartState.userCart.map((cartItem,index) =>{
-            return(<CartItem name={cartItem.name} price={cartItem.price} quantity={cartItem.quantity}></CartItem>)
+            return(<CartItem key={index} name={cartItem.name} price={cartItem.price} quantity={cartItem.quantity} id={index}></CartItem>)
          })}
       </div>
       <button className="custom-button" onClick={()=>{sendDataToTheBack()}}>Finaliser ma commande</button>
