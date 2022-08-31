@@ -1,0 +1,22 @@
+.container-cart-item{
+    display: flex;
+    align-items: center;
+    padding: 15px 0;
+}
+
+.container-cart-item:not(:first-child){
+    border-top: 1px solid;
+}
+.container-cart-item> img{
+    height:150px;
+    margin-left:15px;
+}
+.informations-container{
+    width: 200px;
+}
+.container-button-item{
+    width:100%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 15px 0 0;
+}

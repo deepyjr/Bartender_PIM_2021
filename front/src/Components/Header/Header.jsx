@@ -16,7 +16,7 @@ function Header() {
             <NavLink className="nav-item" to="/">Boissons</NavLink>
           </li>
           <li>
-              <NavLink className="nav-item" to="/test">Mes informations</NavLink>
+              <NavLink className="nav-item" to="/my-drinks">Boissons commandées</NavLink>
           </li>
           <li> 
           <NavLink to="/cart-content" style={({ isActive }) => {

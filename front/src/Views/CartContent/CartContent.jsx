@@ -24,6 +24,20 @@ function CartContent() {
         });
     };
 
+    const orderCocktail = () => {
+      axios
+        .get(BackAddress + "/rasp/order-cocktail")
+        .then(function (response) {
+          // handle success
+          console.log(response.data)
+        })
+        .catch(function (error) {
+          // handle error
+          console.log(error);
+        });
+    };
+
+
   return (
     <div className="cart-content">
 
@@ -33,7 +47,9 @@ function CartContent() {
             return(<CartItem key={index} name={cartItem.name} price={cartItem.price} quantity={cartItem.quantity} id={index}></CartItem>)
          })}
       </div>
-      <button className="custom-button" onClick={()=>{sendDataToTheBack()}}>Finaliser ma commande</button>
+      <button className="custom-button" onClick={()=>{
+        sendDataToTheBack();
+      }}>Finaliser ma commande</button>
     </div>
   )
 }

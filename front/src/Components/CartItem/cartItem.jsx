@@ -7,7 +7,6 @@ function CardItem(props) {
   const { cartState, cartDispatch } = React.useContext(CartContext);
 
   function deleteFunction(index) {
-    console.log(" test")
     cartDispatch({
       type:"deleteOne",
       payload:index
