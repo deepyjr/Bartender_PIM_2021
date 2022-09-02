@@ -17,19 +17,16 @@ function CartContent() {
         .then(function (response) {
           // handle success
           console.log(response.data)
-        })
-        .catch(function (error) {
-          // handle error
-          console.log(error);
-        });
-    };
-
-    const orderCocktail = () => {
-      axios
-        .get(BackAddress + "/rasp/order-cocktail")
-        .then(function (response) {
-          // handle success
-          console.log(response.data)
+          axios
+            .get(BackAddress + "/rasp/order-cocktail")
+            .then(function (response) {
+              // handle success
+              console.log(response.data)
+            })
+            .catch(function (error) {
+              // handle error
+              console.log(error);
+            });
         })
         .catch(function (error) {
           // handle error
