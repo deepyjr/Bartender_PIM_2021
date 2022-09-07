@@ -29,43 +29,20 @@ function OrderedItem(props) {
   const { cartState, cartDispatch } = React.useContext(CartContext);
   const [progress, setProgress] = React.useState(10);
 
-  React.useEffect(() => {
-    const timer = setInterval(() => {
-      setProgress((prevProgress) => (prevProgress >= 100 ? 10 : prevProgress + 10));
-    }, 800);
-    return () => {
-      clearInterval(timer);
-    };
-  }, []);
 
   return (
     <div className="container-cart-item">
        <img src={process.env.PUBLIC_URL + '/whisky.jpg'} alt="" />
        <div className="informations-container">
           <div>Name : {props.name}</div>
-          <div>{props.price}€</div>
+          <div>Price :{props.price}€</div>
           <div>Quantity : {props.quantity}</div>
+          <div>Date : {props.dateOrdered}</div>
        </div>
        <div className="container-button-item">
        <Box sx={{ width: '100%' }}>
-        <LinearProgressWithLabel value={progress} />
+        <LinearProgressWithLabel value={props.status == "en cours"? 50:0} />
         </Box>
-        <button onClick={() =>{
-          axios
-          .put(BackAddress + "/cart/updateById", {
-            id:"630645e03df734347381fddd",
-            status:"en cours"
-        })
-          .then(function (response) {
-            // handle success
-            console.log(response.data)
-          })
-          .catch(function (error) {
-            // handle error
-            console.log(error);
-          });
-
-        }}> try</button>
        </div>
       
     </div>

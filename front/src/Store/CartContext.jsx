@@ -19,7 +19,6 @@ function cartReducer(state, action) {
             const myIndex = action.payload;
             const tempArray = state.userCart;
             tempArray.pop();
-            console.log("first")
             return {
                 ...state,
                 userCart: tempArray

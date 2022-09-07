@@ -8,30 +8,40 @@ import {BackAddress} from "../../Environnement";
 
 function MyDrinks() {
   const [refreshComponent, setRefreshComponent] = React.useState(true);
-  const { cartState, cartDispatch } = React.useContext(CartContext);
+  const [content, setContent] = React.useState(<div></div>);
 
-    const sendDataToTheBack = () => {
-      axios
-        .post(BackAddress + "/cart", cartState.userCart)
+    React.useEffect(()=>{
+      const getData = () => {
+        axios
+        .get(BackAddress + "/cart")
         .then(function (response) {
           // handle success
-          console.log(response.data)
+          let temp = []
+          response.data.map((item, index)=>{
+            temp.push(<OrderedItem key={index} name={item.drink} price={item.price} quantity={item.quantity} id={index} status={item.status} dateOrdered={item.dateOrdered}  ></OrderedItem>)
+          })
+          setContent(temp)
         })
         .catch(function (error) {
           // handle error
           console.log(error);
         });
-    };
+      }
+
+      if(refreshComponent){
+        getData()
+        setRefreshComponent(false);
+      }
+    },[])
+
   return (
     <>
       <div className="cart-content">
         <div>MyDrinks</div>
         <div className="container-cart">
-        { cartState.userCart.map((cartItem,index) =>{
-            return(<OrderedItem key={index} name={cartItem.name} price={cartItem.price} quantity={cartItem.quantity} id={index}></OrderedItem>)
-         })}
+          {content}
+        
       </div>
-      <button className="custom-button" onClick={()=>{sendDataToTheBack()}}>Finaliser ma commande</button>
       </div>
     </>
   );

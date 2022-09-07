@@ -32,8 +32,6 @@ function Header() {
             </NavLink>
           </li>
         </ul>
-
-        {/* <Button link="/test" text="Commander un cocktail" ></Button> */}
       </div>
     </div>
   );
