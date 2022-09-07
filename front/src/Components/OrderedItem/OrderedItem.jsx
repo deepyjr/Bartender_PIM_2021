@@ -34,13 +34,15 @@ function OrderedItem(props) {
     <div className="container-cart-item">
        <img src={process.env.PUBLIC_URL + '/whisky.jpg'} alt="" />
        <div className="informations-container">
-          <div>Name : {props.name}</div>
-          <div>Price :{props.price}€</div>
-          <div>Quantity : {props.quantity}</div>
-          <div>Date : {props.dateOrdered}</div>
+          <p>Name : {props.name}<br/></p>
+
+          <p>Price :{props.price}€</p>
+          <p>Quantity : {props.quantity}</p>
+          <p>Date : {props.dateOrdered}</p>
        </div>
        <div className="container-button-item">
        <Box sx={{ width: '100%' }}>
+        <p>Status : {props.status}</p>
         <LinearProgressWithLabel value={props.status == "en cours"? 50:0} />
         </Box>
        </div>

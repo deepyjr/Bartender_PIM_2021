@@ -18,7 +18,9 @@ function MyDrinks() {
           // handle success
           let temp = []
           response.data.map((item, index)=>{
-            temp.push(<OrderedItem key={index} name={item.drink} price={item.price} quantity={item.quantity} id={index} status={item.status} dateOrdered={item.dateOrdered}  ></OrderedItem>)
+            if(item.status !== "terminé"){
+              temp.push(<OrderedItem key={index} name={item.drink} price={item.price} quantity={item.quantity} id={index} status={item.status} dateOrdered={item.dateOrdered}  ></OrderedItem>)
+            }
           })
           setContent(temp)
         })
@@ -27,7 +29,6 @@ function MyDrinks() {
           console.log(error);
         });
       }
-
       if(refreshComponent){
         getData()
         setRefreshComponent(false);
@@ -37,11 +38,9 @@ function MyDrinks() {
   return (
     <>
       <div className="cart-content">
-        <div>MyDrinks</div>
         <div className="container-cart">
           {content}
-        
-      </div>
+        </div>
       </div>
     </>
   );
