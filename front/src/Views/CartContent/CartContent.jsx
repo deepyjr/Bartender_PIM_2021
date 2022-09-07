@@ -7,7 +7,7 @@ import { BackAddress } from "../../Environnement";
 
 function CartContent() {
   const [lineItems, setLineItems] = React.useState([]);
-  const { cartState } = React.useContext(CartContext);
+  const { cartState, cartDispatch } = React.useContext(CartContext);
   const [refreshComponent, setRefreshComponent] = React.useState(true);
 
   React.useEffect(() => {
@@ -49,6 +49,10 @@ function CartContent() {
           .then(function (response) {
             // handle success
             console.log(response.data);
+            cartDispatch({
+              type:"resetAll"
+            })
+            window.location.reload();
           })
           .catch(function (error) {
             // handle error
