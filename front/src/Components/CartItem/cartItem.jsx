@@ -1,16 +1,16 @@
 import React from 'react';
 import './cartItem.css';
-import Button from "../Button/Button";
 import { CartContext } from "../../Store/CartContext";
 
 function CardItem(props) {
-  const { cartState, cartDispatch } = React.useContext(CartContext);
+  const { cartDispatch } = React.useContext(CartContext);
 
   function deleteFunction(index) {
     cartDispatch({
       type:"deleteOne",
       payload:index
     })
+    window.location.reload()
   }
 
   return (
