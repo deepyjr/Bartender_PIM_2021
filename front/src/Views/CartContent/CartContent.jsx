@@ -4,15 +4,40 @@ import { CartContext } from "../../Store/CartContext";
 import axios from "axios";
 import CartItem from "../../Components/CartItem/CartItem";
 import { BackAddress } from "../../Environnement";
+import Snackbar from "@mui/material/Snackbar";
+import IconButton from "@mui/material/IconButton";
+import CloseIcon from "@mui/icons-material/Close";
 
 function CartContent() {
   const [lineItems, setLineItems] = React.useState([]);
+  const [open, setOpen] = React.useState(false);
   const { cartState, cartDispatch } = React.useContext(CartContext);
   const [refreshComponent, setRefreshComponent] = React.useState(true);
 
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setOpen(false);
+  };
+
+  const action = (
+    <div style={{backgroundColor: "green"}}>
+      <IconButton
+        size="large"
+        aria-label="close"
+        color="inherit"
+        onClick={handleClose}
+        
+      >
+        <CloseIcon fontSize="small" />
+      </IconButton>
+    </div>
+  );
+
   React.useEffect(() => {
     const getData = () => {
-      let itemsToShow = []
+      let itemsToShow = [];
       cartState.userCart.forEach((item, index) => {
         itemsToShow.push(
           <CartItem
@@ -48,7 +73,7 @@ function CartContent() {
             cartDispatch({
               type: "resetAll",
             });
-            window.location.reload();
+            setRefreshComponent(true)
           })
           .catch(function (error) {
             // handle error
@@ -64,15 +89,31 @@ function CartContent() {
   return (
     <div className="cart-content">
       <h2>Mon panier</h2>
-      <div className="container-cart">{lineItems}</div>
+      <div className="container-cart">
+        {lineItems.length > 0 ? (
+          lineItems
+        ) : (
+          <h1 style={{color:"#537594"}}>Votre verre est vide... Votre commande aussi</h1>
+        )}
+      </div>
       <button
+      disabled={lineItems.length > 0 ? false : true}
         className="custom-button"
         onClick={() => {
+          setOpen(true)
           sendDataToTheBack();
         }}
       >
         Finaliser ma commande
       </button>
+      <Snackbar
+        open={open}
+        autoHideDuration={6000}
+        onClose={handleClose}
+        message={"Votre commande est à présent en cours de préparation"}
+        action={action}
+        anchorOrigin={ {vertical: 'top', horizontal: 'right'} }
+      />
     </div>
   );
 }
