@@ -22,7 +22,7 @@ function CardItem(props) {
           <p>Quantity : {props.quantity}</p>
        </div>
        <div className="container-button-item">
-        <button onClick={()=>{deleteFunction(props.id)}} className="custom-button delete">Supprimer du panier</button>
+        <button onClick={()=>{deleteFunction(props.name)}} className="custom-button delete">Supprimer du panier</button>
        </div>
       
     </div>

@@ -14,29 +14,38 @@ function CartContent() {
     const getData = () => {
       let temp = [];
       let itemsToShow = [];
-        cartState.userCart.map((cartItem) => {
-            return temp.push(cartItem)  
-        });
+      cartState.userCart.map((cartItem) => {
+        return temp.push(cartItem);
+      });
 
-        const groupedElements = Object.values(temp.reduce((group, product) => {
+      const groupedElements = Object.values(
+        temp.reduce((group, product) => {
           const { name } = product;
           group[name] = group[name] ?? [];
           group[name].push(product);
           return group;
-        }, {}));
+        }, {})
+      );
 
-        groupedElements.forEach((item, index)=>{
-          itemsToShow.push(<CartItem key={index} name={item[0].name} price={item[0].price} quantity={item.length} id={index}></CartItem>)
-        })
+      groupedElements.forEach((item, index) => {
+        itemsToShow.push(
+          <CartItem
+            key={index}
+            name={item[0].name}
+            price={item[0].price}
+            quantity={item.length}
+            id={index}
+          ></CartItem>
+        );
+      });
 
-        setLineItems(itemsToShow);
-
+      setLineItems(itemsToShow);
     };
     if (refreshComponent) {
       getData();
       setRefreshComponent(false);
     }
-  }, [refreshComponent,cartState.userCart]);
+  }, [refreshComponent, cartState.userCart]);
 
   const sendDataToTheBack = () => {
     axios
@@ -50,8 +59,8 @@ function CartContent() {
             // handle success
             console.log(response.data);
             cartDispatch({
-              type:"resetAll"
-            })
+              type: "resetAll",
+            });
             window.location.reload();
           })
           .catch(function (error) {
@@ -68,9 +77,7 @@ function CartContent() {
   return (
     <div className="cart-content">
       <h2>Mon panier</h2>
-      <div className="container-cart">
-        {lineItems}
-      </div>
+      <div className="container-cart">{lineItems}</div>
       <button
         className="custom-button"
         onClick={() => {

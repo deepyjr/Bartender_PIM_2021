@@ -24,12 +24,13 @@ function Wrapper(props) {
   };
 
   const action = (
-    <React.Fragment>
+    <React.Fragment className="notif">
       <IconButton
-        size="small"
+        size="large"
         aria-label="close"
         color="inherit"
         onClick={handleClose}
+        
       >
         <CloseIcon fontSize="small" />
       </IconButton>
