@@ -12,29 +12,16 @@ function CartContent() {
 
   React.useEffect(() => {
     const getData = () => {
-      let temp = [];
-      let itemsToShow = [];
-      cartState.userCart.map((cartItem) => {
-        return temp.push(cartItem);
-      });
-
-      const groupedElements = Object.values(
-        temp.reduce((group, product) => {
-          const { name } = product;
-          group[name] = group[name] ?? [];
-          group[name].push(product);
-          return group;
-        }, {})
-      );
-
-      groupedElements.forEach((item, index) => {
+      let itemsToShow = []
+      cartState.userCart.forEach((item, index) => {
         itemsToShow.push(
           <CartItem
             key={index}
-            name={item[0].name}
-            price={item[0].price}
-            quantity={item.length}
+            name={item.name}
+            price={item.price}
+            quantity={item.quantity}
             id={index}
+            refresh={setRefreshComponent}
           ></CartItem>
         );
       });
@@ -45,7 +32,7 @@ function CartContent() {
       getData();
       setRefreshComponent(false);
     }
-  }, [refreshComponent, cartState.userCart]);
+  }, [refreshComponent]);
 
   const sendDataToTheBack = () => {
     axios

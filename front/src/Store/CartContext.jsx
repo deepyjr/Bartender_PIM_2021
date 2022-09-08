@@ -10,22 +10,42 @@ const initialState = {
 function cartReducer(state, action) {
   switch (action.type) {
     case "addToCart": {
-      return {
-        ...state,
-        userCart: [...state.userCart, action.payload],
-      };
+        let checkIfExist = state.userCart.findIndex(e => e.name === action.payload.name)
+        if (checkIfExist === -1) {
+            return {
+                ...state,
+                userCart: [...state.userCart, action.payload],
+              };
+        } else {
+            let temp = state.userCart.map((e) => {
+                if (e.name === action.payload.name) {
+                    e.quantity += 1
+                }
+                return e
+            })
+            return {
+                ...state,
+                userCart: temp
+            }
+        }
+      
     }
     case "deleteOne": {
-      const temp = state.userCart;
-      for (var i = 0; i < temp.length; i++) {
-        if (temp[i].name === action.payload) {
-          temp.splice(i, 1);
-          break;
+      const temp = state.userCart.map((e) => {
+        console.log(e)
+        if (e.name === action.payload) {
+            if (e.quantity === 1) {
+                return
+            }
+            e.quantity -= 1
         }
-      }
+        return e
+
+      });
+      
       return {
         ...state,
-        userCart: temp,
+        userCart: temp.filter(n => n),
       };
     }
     case "resetAll": {

@@ -2,7 +2,7 @@ import React from 'react';
 import './cartItem.css';
 import { CartContext } from "../../Store/CartContext";
 
-function CardItem(props) {
+function CartItem(props) {
   const { cartDispatch } = React.useContext(CartContext);
 
   function deleteFunction(index) {
@@ -10,7 +10,7 @@ function CardItem(props) {
       type:"deleteOne",
       payload:index
     })
-    window.location.reload()
+    props.refresh(true)
   }
 
   return (
@@ -29,4 +29,4 @@ function CardItem(props) {
   )
 }
 
-export default CardItem
+export default CartItem
