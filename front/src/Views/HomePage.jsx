@@ -1,7 +1,5 @@
 import React from "react";
-import Card from "../Components/Card/Card";
 import "./HomePage.css";
-import Layout from "./Layout";
 import Wrapper from "../Components/Wrapper/Wrapper";
 
 function HomePage() {
@@ -13,24 +11,28 @@ function HomePage() {
           title={"Populaire"}
           items={[
             {
-              name: "Maragarita",
-              description: "tequila - triple sec - jus de citrons verts",
+              name: "Rhum coca",
+              description: "Un rhum avec du coca",
               prix: 10,
+              nametag: "rhumcoca"
             },
             {
-              name: "Mojito",
-              description: "rhum blanc - sucre de canne - menthe",
+              name: "Whisky Coca",
+              description: "Un whisky avec du coca",
               prix: 8,
+              nametag: "whiskycoca"
             },
             {
-              name: "Heineken - 25 cl",
-              description: "Bière blonde légère",
+              name: "Rhum",
+              description: "Du rhum tout seul",
               prix: 4,
+              nametag: "rhum"
             },
             {
-              name: "Ricard",
-              description: "Boisson du sud par exellence",
+              name: "Coca",
+              description: "Du coca cola bien frais",
               prix: 4,
+              nametag: "coca"
             },
           ]}
         />

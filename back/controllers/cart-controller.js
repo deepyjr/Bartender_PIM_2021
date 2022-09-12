@@ -40,6 +40,7 @@ function CreateCart(data) {
         price: item.price,
         dateOrdered: dateFunctions.getDateNow(),
         status: "en attente",
+        nametag: item.nametag
       });
       mongoose.model("carts").create(cartItem, function (err, cart) {
         if (err) {

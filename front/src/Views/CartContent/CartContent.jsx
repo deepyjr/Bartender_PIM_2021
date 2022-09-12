@@ -11,6 +11,7 @@ import CloseIcon from "@mui/icons-material/Close";
 function CartContent() {
   const [lineItems, setLineItems] = React.useState([]);
   const [open, setOpen] = React.useState(false);
+  const [pending, setPending] = React.useState(false);
   const { cartState, cartDispatch } = React.useContext(CartContext);
   const [refreshComponent, setRefreshComponent] = React.useState(true);
 
@@ -57,9 +58,10 @@ function CartContent() {
       getData();
       setRefreshComponent(false);
     }
-  }, [refreshComponent]);
+  }, [refreshComponent, cartState.userCart]);
 
   const sendDataToTheBack = () => {
+    setPending(true)
     axios
       .post(BackAddress + "/cart", cartState.userCart)
       .then(function (response) {
@@ -68,6 +70,7 @@ function CartContent() {
         axios
           .get(BackAddress + "/rasp/order-cocktail")
           .then(function (response) {
+            setPending(false)
             // handle success
             console.log(response.data);
             cartDispatch({
@@ -97,14 +100,14 @@ function CartContent() {
         )}
       </div>
       <button
-      disabled={lineItems.length > 0 ? false : true}
+      disabled={lineItems.length > 0 || pending ? false : true}
         className="custom-button"
         onClick={() => {
           setOpen(true)
           sendDataToTheBack();
         }}
       >
-        Finaliser ma commande
+        {pending ? "En cours de préparation" : "Finaliser votre commande"}
       </button>
       <Snackbar
         open={open}

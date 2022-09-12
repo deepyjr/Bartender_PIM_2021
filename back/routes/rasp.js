@@ -10,7 +10,6 @@ module.exports = (server) => {
       .catch((err) => {
         res.send("erreur :" + err);
       });
-
     res.json(orderCocktail);
   });
 
@@ -26,5 +25,4 @@ module.exports = (server) => {
 
     res.json(orderCocktail);
   });
-  
 };

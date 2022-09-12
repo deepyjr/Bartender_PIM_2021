@@ -1,13 +1,12 @@
 import React from "react";
 import "./Wrapper.css";
 import { CartContext } from "../../Store/CartContext";
-import Button from "@mui/material/Button";
 import Snackbar from "@mui/material/Snackbar";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 
 function Wrapper(props) {
-  const { cartState, cartDispatch } = React.useContext(CartContext);
+  const { cartDispatch } = React.useContext(CartContext);
   const [open, setOpen] = React.useState(false);
   const [itemAdded, setItemAdded] = React.useState("");
 
@@ -71,6 +70,7 @@ function Wrapper(props) {
                     description: item.description,
                     price: item.prix,
                     quantity: 1,
+                    nametag: item.nametag
                   },
                 });
                 handleClick(item.name);

@@ -3,7 +3,8 @@ const findFunctions = require("../functions/find-functions");
 const mongoose = require("mongoose");
 const cartController = require("./cart-controller");
 const { resolve } = require("path");
-const Cart = require('../models/Cart')
+const Cart = require("../models/Cart");
+const axios = require("axios");
 
 function OrdersStatus() {
   return new Promise((resolve, reject) => {
@@ -33,33 +34,53 @@ function OrderCocktail() {
     mongoose
       .model("carts")
       .find({})
-      .exec(function (err, items) {
+      .exec(async function (err, items) {
         if (err) {
           reject(err);
         } else {
-          tempData = items;
-          oldestOrder = findFunctions.findTheOldestElement(tempData);
+          for (const i of items) {
+            tempData = items;
+            oldestOrder = i
 
-          // check if there is data with status "en cours"
-          if (oldestOrder.status !== "en cours") {
-
-            Cart.findOneAndUpdate({_id : oldestOrder.id}, {$set:{status : "en cours"}}).then(() => {
-                    console.log("updated");
-            }).catch((err) => {
+            //check if there is data with status "en cours"
+            if (
+              oldestOrder.status !== "en cours" &&
+              oldestOrder.status !== "Terminée"
+            ) {
+              await Cart.findOneAndUpdate(
+                { _id: oldestOrder.id },
+                { $set: { status: "en cours" } }
+              )
+                .then(() => {
+                  console.log("updated");
+                })
+                .catch((err) => {
+                  console.log(err);
+                });
+            }
+            if (oldestOrder.status !== "Terminée") {
+            await axios
+              .get("http://192.168.0.21:3000/" + i.nametag)
+              .then(async (response) => {
+                console.log("commande effectuée");
+                await Cart.findOneAndUpdate(
+                  { _id: oldestOrder.id },
+                  { $set: { status: "Terminée" } }
+                )
+                  .then(() => {
+                    console.log("update à terminée");
+                  })
+                  .catch((err) => {
                     console.log(err);
-            });
-            // axios.post('', cocktail)
-            // .then(response => console.log(response))
-            // .catch(error => {
-            //     console.error('There was an error!', error);
-            // });
-            resolve(oldestOrder);
-          } else if (oldestOrder.status === "en cours") {
-            resolve("Commande en cours de réalisation");
-          } else {
-            resolve("Commande terminée");
+                  });
+              })
+              .catch((error) => {
+                console.error("There was an error!", error);
+              });
+            }
           }
         }
+        resolve("commande terminée");
       });
   });
 }
