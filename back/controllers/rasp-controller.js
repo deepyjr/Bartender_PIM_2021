@@ -60,7 +60,7 @@ function OrderCocktail() {
             }
             if (oldestOrder.status !== "Terminée") {
             await axios
-              .get("http://192.168.0.21:3000/" + i.nametag)
+              .get("http://172.16.2.129:3000/" + i.nametag)
               .then(async (response) => {
                 console.log("commande effectuée");
                 await Cart.findOneAndUpdate(
